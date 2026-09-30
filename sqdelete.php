@@ -4,9 +4,9 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
    && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
 {
 
-  if (isset($_POST['delete']))
+  if (isset($_POST['request']))
   {
-      echo $_POST['delete'];
+      echo $_POST['request'];
 
   }
   else
@@ -25,20 +25,16 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
   //$body = $_SERVER["REMOTE_ADDR"];
   $body = $_POST['request'];
   $kiji = $_POST['action'];
- $delete=(int)$_POST['delete'];
+  $delno = (int)$_POST['delno'];
   $db = new SQLite3('db.sqlite3');
   $db->exec('CREATE TABLE IF NOT EXISTS entries(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, kiji TEXT, body TEXT)');
-  $stmt = $db->prepare('DELETE FROM entries WHERE id = 1’);
 
+  $stmt = $db->prepare('DELETE FROM entries WHERE id = :delno');
+  $stmt->bindValue(':delno', $delno, SQLITE3_TEXT);
+  $stmt->bindValue(':title', $title, SQLITE3_TEXT);
+  $stmt->bindValue(':kiji', $kiji, SQLITE3_TEXT);
+  $stmt->bindValue(':body', $body, SQLITE3_TEXT);
   $stmt->execute();
 
-  $msg="削除しました";
-$br="</br>";
-echo  $msg;
-echo  $br;
-echo  $body;
-echo  $br;
-echo  $kiji;
-echo  $br;
-echo  $delete;
-echo  $br;
+  $msg="DBに書き込みました";
+  echo  $msg;

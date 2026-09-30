@@ -45,11 +45,11 @@
       return false;
     });
 
-    $('#deletex').click(function() {
+    $('#delete').click(function() {
       var data = {
         'request' : $('#request').val(),
         'action' : $('#action').val(),
-        'delete' : $('#delete').val(),
+        'delno' : $('#delno').val(),
     
     };
       $.ajax({
@@ -78,9 +78,11 @@
   <form method="post">
     <p><input id="send" value="登録" type="submit" /></p>
     <p><input id="read" value="読み出し" type="submit" /></p>
+    <p><input id="delete" value="削除" type="submit" /></p>
     <p><textarea name="request" id="request" cols="80" rows="1">リンク名</textarea></p>
     <p><textarea name="action" id="action" cols="80" rows="1">url</textarea></p>
-    <p " id="request1" ></p>
+    <p><textarea name="delno" id="delno" cols="80" rows="1">削除no</textarea></p>
+  <p " id="request1" ></p>
 
   </form>
 </body>
