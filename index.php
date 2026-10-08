@@ -77,10 +77,10 @@
 
   <form method="post">
     <p><input id="send" value="登録" type="submit" />
-    <input id="read" value="読み出し" type="submit" />
-    <input id="delete" value="削除" type="submit" /></p>
+    <input id="read" value="読み出し" type="submit" /></p>
     <p><textarea name="request" id="request" cols="80" rows="1">リンク名</textarea></p>
     <p><textarea name="action" id="action" cols="80" rows="1">url</textarea></p>
+     <input id="delete" value="削除" type="submit" /></p>
     <p><textarea name="delno" id="delno" cols="10" rows="1">削除no</textarea></p>
   <p " id="request1" ></p>
 
